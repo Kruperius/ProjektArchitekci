@@ -1,0 +1,30 @@
+/*table {
+	margin-right: auto;
+	margin-left: auto;
+	border: solid;
+	border-collapse: collapse;
+}
+
+table tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+th {
+	background-color: #79aec8;
+	color: white;
+	font-family: Verdana;
+	font-weight: 400;
+	font-size: 12px;
+	text-transform: uppercase;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}*/

@@ -1,0 +1,46 @@
+{% extends 'baza.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'polls/dodaj-architekta.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+<h3 style='text-align: center;' class='m-5'>Zarejestruj się</h3>
+
+<form method="post" novalidate>
+  {% csrf_token %}
+
+	<table>
+		{% for hidden_field in formularz.hidden_fields %}
+		{{ hidden_field }}
+		{% endfor %}
+
+		{% for field in formularz.visible_fields %}
+	    <tr><div class="mb-3">
+	    	<div class="row g-3 align-items-center">
+	    		<th><div class="col-auto">
+	      			<label class="col-form-label" for='{{ field.auto_id }}'>{{ field.label }}:</label>
+	      		</div></th>
+	      			<td><div class="col-auto">
+	      			{{ field }}
+	      		</div>	
+	      			{% if field.help_text %}
+	      			<small class="form-text text-muted">{{ field.help_text }}</small>
+	      			{% endif %}
+	  		</td></div>
+	    </div></tr>
+		{% endfor %}
+
+				<th></th><td><button type="submit" class="btn btn-primary">Submit</button></td>
+</table>
+</form>
+
+<!-- <form method = 'POST'> {%csrf_token%}
+	<table>
+	{{formularz.as_table}}
+	</table>
+	<input type="submit" value="Save" />
+</form> -->
+{% endblock %}

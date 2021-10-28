@@ -1,0 +1,64 @@
+<!-- <ul>
+	<li style='display: inline-block; margin: 5px;'><a href='http://127.0.0.1:8000/'>Strona główna</a></li>
+	<li style='display: inline-block; margin: 5px;'><a href='/architekci'>Architekci</a></li>
+	<li style='display: inline-block; margin: 5px;'><a href='/projekty'>Projekty</a></li>
+	<li style='display: inline-block; margin: 5px;'><a href='/projekty'>Kontakt</a></li>
+	<li style='display: inline-block; margin: 5px; float: right'><ul><a>Twoje konto</a>
+		{% if user.is_authenticated %}
+		<li><a href='/logout' class='logowanie'>Wyloguj się</a></li>
+		{% else %}
+     	<li><a href='/login' class='logowanie'>Zaloguj się</a></li>
+     	<li><a href='/zarejestruj-architekta' class='logowanie'>Zarejestruj się</a></li>
+     	{% endif %}
+		</ul></li><div style='clear: both;'></div>
+</ul> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="http://127.0.0.1:8000/">Architekci</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="http://127.0.0.1:8000/">Strona główna</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/architekci">Architekci</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projekty">Projekty</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Kontakt</a>
+        </li>
+        
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
+      <ul class='nav navbar-nav float-right'>
+      	<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Twoje konto
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          	{% if user.is_authenticated %}
+          	<li><a class="dropdown-item" href="{% url 'moje-projekty' %}">Moje projekty</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout'%}?next={{request.path}}">Wyloguj się</a></li>
+            {% else %}
+            <li><a class="dropdown-item" href="{% url 'login'%}?next={{request.path}}">Zaloguj się</a></li>
+            <!-- <li><hr class="dropdown-divider"></li> -->
+            <li><a class="dropdown-item" href="/dodaj-architekta">Zarejestruj się</a></li>
+            {% endif %}
+          </ul>
+      </ul>
+      <!-- <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+    </div>
+  </div>
+</nav>

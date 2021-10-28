@@ -1,0 +1,24 @@
+table {
+	max-width: 340px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 180px;
+}
+
+th {
+	font-weight: normal;
+	text-align: left;
+	vertical-align: top;
+}
+
+tr {
+	margin: 10px;
+}
+
+#submit {
+	margin-top: 10px;
+}
+
+.reset_hasla {
+	padding-top: 40px;
+}

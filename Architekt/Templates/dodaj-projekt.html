@@ -1,0 +1,49 @@
+{% extends 'baza.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'polls/dodaj-projekt.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<!-- <form method = 'POST' enctype='multipart/form-data'> {%csrf_token%}
+	<table>
+		{{formularz.as_table}}
+		{% for field in formularz %}
+		<tr ><td style='padding-bottom:20px;'>{{ field.label_tag }}</td><td style='padding-bottom:20px;'>{{ field }}</td></tr>
+		{% endfor %}
+    </table>
+	<input type="submit" value="Save" />
+</form> -->
+<form method="post" enctype='multipart/form-data' novalidate>
+  {% csrf_token %}
+
+	<table>
+		{% for hidden_field in formularz.hidden_fields %}
+		{{ hidden_field }}
+		{% endfor %}
+
+		{% for field in formularz.visible_fields %}
+	    <tr><div class="mb-3">
+	    	<div class="row g-3 align-items-center">
+	    		<th><div class="col-auto">
+	      			<label class="col-form-label" for='{{ field.auto_id }}'>{{ field.label }}:</label>
+	      		</div></th>
+	      			<td><div class="col-auto">
+	      			{{ field }}
+	      		</div>	
+	      			{% if field.help_text %}
+	      			<small class="form-text text-muted">{{ field.help_text }}</small>
+	      			{% endif %}
+	  		</td></div>
+	    </div></tr>
+		{% endfor %}
+
+				<th><button type="submit" class="btn btn-primary">Zapisz</button></th>
+</table>
+</form>
+{% else %}
+<p style='text-align: center;'>Musisz być zalogowany, żeby zarejestrować projekt.</p>
+{% endif %}
+{% endblock %}

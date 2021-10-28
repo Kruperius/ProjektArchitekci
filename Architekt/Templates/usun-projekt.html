@@ -1,0 +1,20 @@
+{% extends "baza.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'polls/usun-projekt.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<p>Czy na pewno chcesz usunąć {{projekt}}?</p>
+
+<form action="{% url 'delete_projekt' projekt.id %}" method='POST' class="form">
+    {% csrf_token %}
+
+<a href="{% url 'moje-projekty' %}"><button type="button">Cancel</button></a>
+<!-- <input type="submit" name="Confirm" value="Usuń"> -->
+<button type="submit">Usuń</button>
+
+</form>
+
+{% endblock %}

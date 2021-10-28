@@ -1,0 +1,16 @@
+table {
+	margin-top: 150px;
+	max-width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+th {
+	font-weight: normal;
+	text-align: left;
+	vertical-align: top;
+}
+
+td {
+	padding-bottom: 25px;
+}
